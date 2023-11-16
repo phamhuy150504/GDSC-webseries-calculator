@@ -10,13 +10,14 @@ let input = document.getElementById('input'),
 for (let i = 0; i < number.length; i++) {
     number[i].addEventListener("click", function (e) {
 
-        // storing current input string and its last character in letiables - used later
         let currentString = input.innerHTML;
         let lastChar = currentString[currentString.length - 1];
 
         if (resultDisplayed === false) {
             input.innerHTML += e.target.innerHTML;
-        } else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
+        } 
+        // if user want add number after clicking '=' button
+        else if (resultDisplayed === true && lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
             resultDisplayed = false;
             input.innerHTML += e.target.innerHTML;
         } else {
@@ -35,8 +36,8 @@ for (let i = 0; i < operator.length; i++) {
         let currentString = input.innerHTML;
         let lastChar = currentString[currentString.length - 1];
 
-        // if last character entered is an operator, replace it with the currently pressed one
         if (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
+            // if user change operator we will change operator in input
             let newString = currentString.substring(0, currentString.length - 1) + e.target.innerHTML;
             input.innerHTML = newString;
         } else if (currentString.length == 0) {
@@ -57,17 +58,9 @@ result.addEventListener("click", function () {
   
     let operators = inputString.replace(/[0-9]|\./g, "").split("");
 
-    console.log(inputString);
-    console.log(operators);
-    console.log(numbers);
-    console.log("----------------------------");
-
-
-
     let divide = operators.indexOf("÷");
     while (divide != -1) {
         numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
-        console.log(numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]));
         operators.splice(divide, 1);
         divide = operators.indexOf("÷");
     }
