@@ -25,7 +25,6 @@ for (let i = 0; i < number.length; i++) {
             input.innerHTML = "";
             input.innerHTML += e.target.innerHTML;
         }
-
     });
 }
 
@@ -49,7 +48,7 @@ for (let i = 0; i < operator.length; i++) {
     });
 }
 
-result.addEventListener("click", function () {
+result.addEventListener("click",  () => {
 
     let inputString = input.innerHTML;
 
@@ -88,7 +87,7 @@ result.addEventListener("click", function () {
 
     input.innerHTML = numbers[0];
     resultDisplayed = true; 
-});
+})
 
 clear.addEventListener("click", function () {
     input.innerHTML = "";
